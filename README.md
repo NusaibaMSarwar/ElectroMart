@@ -17,9 +17,9 @@ Web and mobile based e-commerce system.
 
 ## Team Members
 
-- Nusaiba M Sarwar
-- Team Member 2
-- Team Member 3
+- Nusaiba Sarwar
+- Joyeta Sharma Oishee
+- Jannatul Ferdus Sweety
 
 ## Target Users
 
