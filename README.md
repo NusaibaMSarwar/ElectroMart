@@ -65,3 +65,38 @@ ElectroMart/
 
   README.md
   .gitignore
+```
+
+## Scope
+
+### In Scope
+
+- Web application for customers and administrators
+- Mobile application for customers
+- Django REST API backend
+- PostgreSQL database
+- Product catalog, cart, wishlist, checkout, and order tracking
+- Admin dashboard
+- Cash on Delivery payment
+- Invoice generation
+- Testing and weekly progress updates
+
+### Out of Scope
+
+- Real online payment gateway integration
+- Third-party logistics or shipping carrier integration
+- Multi-language support
+- Multi-currency support
+- Publishing to Google Play Store or Apple App Store
+
+## Weekly Progress
+
+Weekly progress updates will be added inside:
+
+```text
+docs/weekly-progress/
+```
+
+## Current Status
+
+Initial repository and project folder structure have been created.
