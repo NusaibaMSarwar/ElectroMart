@@ -89,14 +89,3 @@ ElectroMart/
 - Multi-currency support
 - Publishing to Google Play Store or Apple App Store
 
-## Weekly Progress
-
-Weekly progress updates will be added inside:
-
-```text
-docs/weekly-progress/
-```
-
-## Current Status
-
-Initial repository and project folder structure have been created.
