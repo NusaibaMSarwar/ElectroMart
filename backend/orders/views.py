@@ -1,4 +1,5 @@
 from django.db import transaction
+from django.db.models import Sum
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from cart.models import CartItem
@@ -84,3 +85,31 @@ class InvoiceDetailView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
+    
+class SalesReportView(generics.GenericAPIView):
+    permission_classes = [permissions.IsAdminUser]
+
+    def get(self, request):
+        total_orders = Order.objects.count()
+        delivered_orders = Order.objects.filter(
+            status=Order.STATUS_DELIVERED
+        ).count()
+        pending_orders = Order.objects.filter(
+            status=Order.STATUS_PENDING
+        ).count()
+
+        total_revenue = Order.objects.filter(
+            status=Order.STATUS_DELIVERED
+        ).aggregate(total=Sum('total_amount'))['total'] or 0
+
+        total_products_sold = OrderItem.objects.filter(
+            order__status=Order.STATUS_DELIVERED
+        ).aggregate(total=Sum('quantity'))['total'] or 0
+
+        return Response({
+            'total_orders': total_orders,
+            'delivered_orders': delivered_orders,
+            'pending_orders': pending_orders,
+            'total_revenue': total_revenue,
+            'total_products_sold': total_products_sold,
+        })
