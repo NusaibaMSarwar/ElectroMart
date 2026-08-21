@@ -1,6 +1,11 @@
 {
+<<<<<<< Updated upstream
     "name": "frontend",
     "short_name": "frontend",
+=======
+    "name": "electromart_frontend",
+    "short_name": "electromart_frontend",
+>>>>>>> Stashed changes
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 # frontend
+=======
+# electromart_frontend
+>>>>>>> Stashed changes
 
 A new Flutter project.
 
