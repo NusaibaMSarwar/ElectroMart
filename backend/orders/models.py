@@ -4,15 +4,17 @@ from products.models import Product
 
 
 class Order(models.Model):
-    STATUS_PENDING = 'pending'
+    STATUS_CONFIRMED = 'confirmed'
     STATUS_PROCESSING = 'processing'
     STATUS_SHIPPED = 'shipped'
+    STATUS_IN_TRANSIT = 'in_transit'
     STATUS_DELIVERED = 'delivered'
 
     STATUS_CHOICES = [
-        (STATUS_PENDING, 'Pending'),
+        (STATUS_CONFIRMED, 'Order Confirmed'),
         (STATUS_PROCESSING, 'Processing'),
         (STATUS_SHIPPED, 'Shipped'),
+        (STATUS_IN_TRANSIT, 'In Transit'),
         (STATUS_DELIVERED, 'Delivered'),
     ]
 
@@ -28,7 +30,7 @@ class Order(models.Model):
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
-        default=STATUS_PENDING
+        default=STATUS_CONFIRMED
     )
     total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     ordered_at = models.DateTimeField(auto_now_add=True)

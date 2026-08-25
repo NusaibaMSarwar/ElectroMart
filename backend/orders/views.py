@@ -96,8 +96,8 @@ class SalesReportView(generics.GenericAPIView):
         delivered_orders = Order.objects.filter(
             status=Order.STATUS_DELIVERED
         ).count()
-        pending_orders = Order.objects.filter(
-            status=Order.STATUS_PENDING
+        confirmed = Order.objects.filter(
+            status=Order.STATUS_CONFIRMED
         ).count()
 
         total_revenue = Order.objects.filter(
@@ -111,10 +111,11 @@ class SalesReportView(generics.GenericAPIView):
         return Response({
             'total_orders': total_orders,
             'delivered_orders': delivered_orders,
-            'pending_orders': pending_orders,
+            'confirmed_orders': confirmed_orders,
             'total_revenue': total_revenue,
             'total_products_sold': total_products_sold,
         })
+    
 class AdminDashboardView(generics.GenericAPIView):
     permission_classes = [permissions.IsAdminUser]
 
@@ -175,10 +176,10 @@ class AdminDashboardView(generics.GenericAPIView):
             'available_products': Product.objects.filter(is_available=True).count(),
             'low_stock_products': Product.objects.filter(stock__lte=5).count(),
 
-            'total_orders': Order.objects.count(),
-            'pending_orders': status_counts.get(Order.STATUS_PENDING, 0),
+            'confirmed_orders': status_counts.get(Order.STATUS_CONFIRMED, 0),
             'processing_orders': status_counts.get(Order.STATUS_PROCESSING, 0),
             'shipped_orders': status_counts.get(Order.STATUS_SHIPPED, 0),
+            'in_transit_orders': status_counts.get(Order.STATUS_IN_TRANSIT, 0),
             'delivered_orders': status_counts.get(Order.STATUS_DELIVERED, 0),
 
             'registered_users': User.objects.filter(is_staff=False).count(),
@@ -212,9 +213,10 @@ class AdminOrderStatusUpdateView(generics.GenericAPIView):
         new_status = request.data.get('status')
 
         valid_statuses = [
-            Order.STATUS_PENDING,
+            Order.STATUS_CONFIRMED,
             Order.STATUS_PROCESSING,
             Order.STATUS_SHIPPED,
+            Order.STATUS_IN_TRANSIT,
             Order.STATUS_DELIVERED,
         ]
 
