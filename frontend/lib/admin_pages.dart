@@ -272,10 +272,97 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> {
   }
 
   Widget overviewPage() {
+    final revenue = data['total_revenue'];
+    final lowStock = data['low_stock_products'] ?? 0;
+
     return ListView(
       padding: const EdgeInsets.all(20),
       children: [
-        title('Overview'),
+        Container(
+          padding: const EdgeInsets.all(22),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [adminNavy, adminNavyDeep],
+            ),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      greeting(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -0.3,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      "Here's how ElectroMart is doing right now.",
+                      style: TextStyle(color: Colors.white.withValues(alpha: 0.75)),
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    'TOTAL REVENUE',
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.6),
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.8,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'BDT $revenue',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 26,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -0.5,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        if (lowStock is num && lowStock > 0) ...[
+          const SizedBox(height: 14),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              color: const Color(0xFFFFF4E5),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: const Color(0xFFFFE1B3)),
+            ),
+            child: Row(
+              children: [
+                const Icon(Icons.warning_amber_rounded, color: Color(0xFFB45309), size: 20),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    '$lowStock product${lowStock == 1 ? '' : 's'} running low on stock — check the Stock tab.',
+                    style: const TextStyle(color: Color(0xFFB45309), fontWeight: FontWeight.w600, fontSize: 13.5),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+        const SizedBox(height: 24),
+        section('Catalog & inventory', Icons.inventory_2_outlined),
         Wrap(
           spacing: 12,
           runSpacing: 12,
@@ -283,41 +370,178 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> {
             statCard('Total Products', data['total_products'], Icons.inventory_2_outlined),
             statCard('Available Products', data['available_products'], Icons.check_circle_outline),
             statCard('Low Stock', data['low_stock_products'], Icons.warning_amber_outlined),
-            statCard('Total Orders', data['total_orders'], Icons.receipt_long_outlined),
-            statCard('Confirmed Orders', data['confirmed_orders'], Icons.check_circle_outline),
-statCard('Processing', data['processing_orders'], Icons.sync),
-statCard('Shipped', data['shipped_orders'], Icons.local_shipping_outlined),
-statCard('In Transit', data['in_transit_orders'], Icons.route_outlined),
-statCard('Delivered', data['delivered_orders'], Icons.done_all_outlined),
             statCard('Registered Users', data['registered_users'], Icons.people_outline),
-            statCard('Revenue', 'BDT ${data['total_revenue']}', Icons.payments_outlined),
           ],
         ),
         const SizedBox(height: 24),
-        section('New Orders'),
+        section('Orders by status', Icons.receipt_long_outlined),
+        Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: [
+            statCard('Total Orders', data['total_orders'], Icons.receipt_long_outlined),
+            statCard('Confirmed', data['confirmed_orders'], Icons.check_circle_outline),
+            statCard('Processing', data['processing_orders'], Icons.sync),
+            statCard('Shipped', data['shipped_orders'], Icons.local_shipping_outlined),
+            statCard('In Transit', data['in_transit_orders'], Icons.route_outlined),
+            statCard('Delivered', data['delivered_orders'], Icons.done_all_outlined),
+          ],
+        ),
+        const SizedBox(height: 24),
+        section('New orders needing action', Icons.notifications_active_outlined),
         newOrders.isEmpty ? emptyText('No new pending orders.') : orderList(newOrders),
       ],
     );
+  }
+
+  String greeting() {
+    final hour = DateTime.now().hour;
+    if (hour < 12) return 'Good morning, Admin';
+    if (hour < 17) return 'Good afternoon, Admin';
+    return 'Good evening, Admin';
   }
 
   Widget stockPage() {
     return ListView(
       padding: const EdgeInsets.all(20),
       children: [
-        title('Products and Stock'),
-        dataTable(
-          columns: const ['ID', 'Product', 'Brand', 'Category', 'Price', 'Stock', 'Available'],
-          rows: products.map((item) => [
-            '${item['id']}',
-            '${item['name']}',
-            '${item['brand']}',
-            '${item['category__name']}',
-            'BDT ${item['price']}',
-            '${item['stock']}',
-            item['is_available'] == true ? 'Yes' : 'No',
-          ]).toList(),
+        title('Products and stock'),
+        Text(
+          '${products.length} product${products.length == 1 ? '' : 's'} in the catalog',
+          style: const TextStyle(color: adminMuted, fontSize: 13.5),
         ),
+        const SizedBox(height: 16),
+        products.isEmpty ? emptyText('No products yet.') : stockTable(products),
       ],
+    );
+  }
+
+  Widget stockTable(List productItems) {
+    return Card(
+      elevation: 0,
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: const BorderSide(color: adminLine),
+      ),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+            color: adminSurfaceTint,
+            child: const Row(
+              children: [
+                Expanded(flex: 3, child: Text('PRODUCT', style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w700, color: adminMuted, letterSpacing: 0.4))),
+                Expanded(flex: 2, child: Text('CATEGORY', style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w700, color: adminMuted, letterSpacing: 0.4))),
+                Expanded(flex: 1, child: Text('PRICE', style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w700, color: adminMuted, letterSpacing: 0.4))),
+                Expanded(flex: 2, child: Text('STOCK', style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w700, color: adminMuted, letterSpacing: 0.4))),
+              ],
+            ),
+          ),
+          ...List.generate(productItems.length, (index) {
+            final item = productItems[index];
+            final stock = int.tryParse('${item['stock']}') ?? 0;
+            final available = item['is_available'] == true;
+
+            return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+              decoration: BoxDecoration(
+                border: index == productItems.length - 1
+                    ? null
+                    : const Border(bottom: BorderSide(color: adminLine)),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 34,
+                          height: 34,
+                          decoration: BoxDecoration(
+                            color: adminSurfaceTint,
+                            borderRadius: BorderRadius.circular(9),
+                          ),
+                          child: const Icon(Icons.inventory_2_outlined, size: 16, color: adminNavy),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${item['name']}',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(fontWeight: FontWeight.w700, color: adminNavyDeep, fontSize: 13.5),
+                              ),
+                              Text(
+                                '${item['brand']}',
+                                style: const TextStyle(color: adminMuted, fontSize: 12),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Text('${item['category__name']}', style: const TextStyle(fontSize: 13, color: adminMuted)),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Text('BDT ${item['price']}', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: adminNavyDeep)),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Wrap(
+                      spacing: 6,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        stockBadge(stock),
+                        if (!available)
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFFCE4E0),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const Text('HIDDEN', style: TextStyle(color: Color(0xFFE0402A), fontSize: 10, fontWeight: FontWeight.w800)),
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }),
+        ],
+      ),
+    );
+  }
+
+  Widget stockBadge(int stock) {
+    final Color color;
+    final String label;
+    if (stock <= 0) {
+      color = const Color(0xFFE0402A);
+      label = 'Out of stock';
+    } else if (stock <= 10) {
+      color = const Color(0xFFB45309);
+      label = '$stock left';
+    } else {
+      color = const Color(0xFF17A34A);
+      label = '$stock in stock';
+    }
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(label, style: TextStyle(color: color, fontSize: 11, fontWeight: FontWeight.w700)),
     );
   }
 
@@ -336,10 +560,10 @@ statCard('Delivered', data['delivered_orders'], Icons.done_all_outlined),
     padding: const EdgeInsets.all(20),
     children: [
       title('Users'),
-      section('Admins'),
+      section('Admins', Icons.admin_panel_settings_outlined),
       adminTable(admins),
       const SizedBox(height: 24),
-      section('Customers'),
+      section('Customers', Icons.people_alt_outlined),
       customerTable(customers),
     ],
   );
@@ -521,9 +745,17 @@ Widget customerTable(List customerItems) {
         child: Text(text, style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: adminNavyDeep, letterSpacing: -0.4)),
       );
 
-  Widget section(String text) => Padding(
+  Widget section(String text, [IconData? icon]) => Padding(
         padding: const EdgeInsets.only(bottom: 12),
-        child: Text(text, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: adminNavyDeep)),
+        child: Row(
+          children: [
+            if (icon != null) ...[
+              Icon(icon, size: 18, color: adminNavy),
+              const SizedBox(width: 8),
+            ],
+            Text(text, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: adminNavyDeep)),
+          ],
+        ),
       );
 
   Widget emptyText(String text) => Card(
