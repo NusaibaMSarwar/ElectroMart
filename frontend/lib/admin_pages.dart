@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 
-final adminApiBaseUrl = kIsWeb
-    ? 'http://127.0.0.1:8000/api'
-    : 'http://10.0.2.2:8000/api';
+final adminApiBaseUrl = 'https://electromart-backend-ab2n.onrender.com/api';
 const adminNavy = Color(0xFF0E2A5E);
 const adminNavyDeep = Color(0xFF081A3D);
 const adminOrange = Color(0xFFFF5A1F);

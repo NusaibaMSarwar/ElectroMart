@@ -27,9 +27,7 @@ const lineColor = Color(0xFFE6E9F2); // hairline borders
 const mutedText = Color(0xFF667085); // secondary copy
 const spacing = 4.0; // base spacing unit (multiples of 4)
 
-final apiBaseUrl = kIsWeb
-    ? 'http://127.0.0.1:8000/api'
-    : 'http://10.0.2.2:8000/api';
+final apiBaseUrl = 'https://electromart-backend-ab2n.onrender.com/api';
 
 void main() => runApp(const ElectroMartApp());
 
