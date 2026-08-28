@@ -1,0 +1,592 @@
+[
+{
+  "model": "products.category",
+  "pk": 1,
+  "fields": {
+    "name": "Phones",
+    "slug": "phones",
+    "description": "Smartphones",
+    "created_at": "2026-07-01T18:29:19.592Z"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 2,
+  "fields": {
+    "name": "Laptops",
+    "slug": "laptops",
+    "description": "Laptops and notebook computers",
+    "created_at": "2026-07-01T18:29:39.567Z"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 3,
+  "fields": {
+    "name": "Accessories",
+    "slug": "accessories",
+    "description": "Electronic accessories and gadgets",
+    "created_at": "2026-07-01T18:29:56.966Z"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 4,
+  "fields": {
+    "name": "TVs",
+    "slug": "tvs",
+    "description": "Televisions and smart TVs",
+    "created_at": "2026-07-01T18:30:16.029Z"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 5,
+  "fields": {
+    "name": "Tablets",
+    "slug": "tablets",
+    "description": "",
+    "created_at": "2026-08-22T18:08:13.821Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 7,
+  "fields": {
+    "category": 4,
+    "name": "Toshiba 55M450RP 55",
+    "slug": "toshiba-55m450rp-55",
+    "brand": "Toshiba",
+    "description": "55 inch smart TV. 4K display quality. HDR viewing support. Built-in streaming apps. Multiple HDMI and USB ports. Good for movies, sports, and gaming.",
+    "price": "76000.00",
+    "stock": 6,
+    "image": "products/tv2.jpeg",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T17:51:45.122Z",
+    "updated_at": "2026-08-27T12:58:47.155Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 8,
+  "fields": {
+    "category": 4,
+    "name": "Haier 43P7 Pro 43",
+    "slug": "haier-43p7-pro-43",
+    "brand": "Haier",
+    "description": "43 inch smart TV. Clear Full HD or 4K viewing experience. Built-in apps support. Multiple HDMI and USB ports. Good sound quality. Suitable for home entertainment.",
+    "price": "86000.00",
+    "stock": 7,
+    "image": "products/tv1.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T17:52:34.697Z",
+    "updated_at": "2026-08-22T17:52:34.697Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 9,
+  "fields": {
+    "category": 3,
+    "name": "Imiki Muse 1",
+    "slug": "imiki-muse-1",
+    "brand": "Imiki",
+    "description": "Smart watch with stylish design. Fitness tracking support. Heart rate monitoring. Notification alerts. Long battery backup. Suitable for everyday use.",
+    "price": "3800.00",
+    "stock": 3,
+    "image": "products/sm2.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T17:53:34.958Z",
+    "updated_at": "2026-08-22T17:53:34.958Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 10,
+  "fields": {
+    "category": 3,
+    "name": "Amazfit Bip Max Smart Watch",
+    "slug": "amazfit-bip-max-smart-watch",
+    "brand": "Amazfit",
+    "description": "Smart watch with large display. Fitness and health tracking. Heart rate monitoring. Long battery life. Bluetooth connectivity. Suitable for daily activity tracking.",
+    "price": "11000.00",
+    "stock": 8,
+    "image": "products/sm1.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T17:54:31.719Z",
+    "updated_at": "2026-08-22T17:54:53.966Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 11,
+  "fields": {
+    "category": 3,
+    "name": "Foneng PX137",
+    "slug": "foneng-px137",
+    "brand": "Foneng",
+    "description": "Portable power bank for daily charging. Compact and easy to carry. Reliable battery backup. Multiple device support. Suitable for travel and emergency use.",
+    "price": "3800.00",
+    "stock": 2,
+    "image": "products/foneng.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T17:56:03.973Z",
+    "updated_at": "2026-08-22T17:56:03.973Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 12,
+  "fields": {
+    "category": 3,
+    "name": "Anker Power Bank",
+    "slug": "anker-power-bank",
+    "brand": "Anker",
+    "description": "Portable power bank. Fast charging support. Large battery capacity. Compact design. Safe charging protection. Suitable for phones, earbuds, and small devices.",
+    "price": "3900.00",
+    "stock": 6,
+    "image": "products/powerbank.jpg",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T17:57:01.283Z",
+    "updated_at": "2026-08-22T17:57:01.283Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 13,
+  "fields": {
+    "category": 3,
+    "name": "Haylou Flowbuds N50 ANC",
+    "slug": "haylou-flowbuds-n50-anc",
+    "brand": "Haylou",
+    "description": "Wireless earbuds with ANC support. Clear sound quality. Comfortable fit. Good battery life. Bluetooth connectivity. Suitable for travel, calls, and music.",
+    "price": "2699.00",
+    "stock": 2,
+    "image": "products/haylouflowbudsn50.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T17:58:30.976Z",
+    "updated_at": "2026-08-22T17:58:30.976Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 14,
+  "fields": {
+    "category": 3,
+    "name": "Redmi Buds 8 Youth",
+    "slug": "redmi-buds-8-youth",
+    "brand": "Redmi",
+    "description": "Affordable wireless earbuds. Clear sound for music and calls. Lightweight design. Good battery backup. Easy Bluetooth pairing. Suitable for daily use.",
+    "price": "3500.00",
+    "stock": 10,
+    "image": "products/redmibuds8youth.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T17:59:39.597Z",
+    "updated_at": "2026-08-22T17:59:39.597Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 15,
+  "fields": {
+    "category": 3,
+    "name": "Apple AirPods Pro 2nd Gen",
+    "slug": "apple-airpods-pro-2nd-gen",
+    "brand": "Apple",
+    "description": "Active noise cancellation. Transparency mode. Spatial audio support. Comfortable silicone ear tips. Long battery life with MagSafe charging case.",
+    "price": "25999.00",
+    "stock": 7,
+    "image": "products/airpodspro3.jpeg",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:00:53.569Z",
+    "updated_at": "2026-08-22T18:00:53.569Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 16,
+  "fields": {
+    "category": 3,
+    "name": "AirPods 4",
+    "slug": "airpods-4",
+    "brand": "Apple",
+    "description": "Wireless Apple earbuds. Clear audio quality. Comfortable fit. Quick pairing with Apple devices. Charging case included. Suitable for music and calls.",
+    "price": "26500.00",
+    "stock": 7,
+    "image": "products/airpods4.jpeg",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:01:36.316Z",
+    "updated_at": "2026-08-22T18:01:36.316Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 17,
+  "fields": {
+    "category": 3,
+    "name": "AirPods Pro 3",
+    "slug": "airpods-pro-3",
+    "brand": "Apple",
+    "description": "Wireless earbuds with active noise cancellation. Clear sound quality. Comfortable in-ear fit. Long battery life with charging case. Good for calls and music.",
+    "price": "27500.00",
+    "stock": 12,
+    "image": "products/airpodspro3_I42ZaDv.jpeg",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:02:34.464Z",
+    "updated_at": "2026-08-22T18:02:34.464Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 18,
+  "fields": {
+    "category": 2,
+    "name": "Acer Nitro V15",
+    "slug": "acer-nitro-v15",
+    "brand": "Acer",
+    "description": "Gaming laptop with strong processor and graphics support. High refresh display. Good cooling system. Suitable for gaming, programming, and creative work.",
+    "price": "89000.00",
+    "stock": 8,
+    "image": "products/Acernitrov15.jpeg",
+    "rating": "4.50",
+    "is_available": true,
+    "created_at": "2026-08-22T18:03:53.005Z",
+    "updated_at": "2026-08-27T12:58:30.865Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 19,
+  "fields": {
+    "category": 2,
+    "name": "Asus Vivobook 14",
+    "slug": "asus-vivobook-14",
+    "brand": "Asus",
+    "description": "Compact 14 inch laptop. Smooth performance for daily work. Lightweight design. Good keyboard and display. Suitable for students and office users.",
+    "price": "89000.00",
+    "stock": 4,
+    "image": "products/asusvivobook14.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:05:20.466Z",
+    "updated_at": "2026-08-22T18:05:20.466Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 20,
+  "fields": {
+    "category": 2,
+    "name": "Lenovo IdeaPad Slim 3",
+    "slug": "lenovo-ideapad-slim-3",
+    "brand": "Lenovo",
+    "description": "Slim everyday laptop. Reliable performance for study and office work. Lightweight body. Good battery life. Suitable for browsing, assignments, and online classes.",
+    "price": "99000.00",
+    "stock": 2,
+    "image": "products/lenovo_ideapad_slim3.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:06:19.502Z",
+    "updated_at": "2026-08-22T18:06:19.502Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 21,
+  "fields": {
+    "category": 2,
+    "name": "Lenovo Legion 5",
+    "slug": "lenovo-legion-5",
+    "brand": "Lenovo",
+    "description": "Gaming laptop with powerful performance. Dedicated graphics support. High refresh display. Strong cooling system. Suitable for gaming, editing, and heavy tasks.",
+    "price": "194999.00",
+    "stock": 4,
+    "image": "products/lenovolegion5.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:07:08.229Z",
+    "updated_at": "2026-08-22T18:07:08.229Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 22,
+  "fields": {
+    "category": 2,
+    "name": "Apple MacBook",
+    "slug": "apple-macbook",
+    "brand": "Apple",
+    "description": "Apple laptop with premium build quality. Sharp Retina-style display. Fast performance for study and productivity. Long battery life. Lightweight design.",
+    "price": "138000.00",
+    "stock": 5,
+    "image": "products/apple_macbook.jpg",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:07:52.266Z",
+    "updated_at": "2026-08-22T18:07:52.266Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 23,
+  "fields": {
+    "category": 5,
+    "name": "Xiaomi Pad 8",
+    "slug": "xiaomi-pad-8",
+    "brand": "Xiomi",
+    "description": "Large high refresh display. Strong performance for entertainment and study. Long battery life. Slim metal-style design. Good value Android tablet.",
+    "price": "49999.00",
+    "stock": 4,
+    "image": "products/Xiomipad8.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:08:57.435Z",
+    "updated_at": "2026-08-28T05:43:24.445Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 24,
+  "fields": {
+    "category": 5,
+    "name": "Huawei MatePad",
+    "slug": "huawei-matepad",
+    "brand": "Huawei",
+    "description": "Large FullView display. Smooth Huawei tablet performance. Good battery life. Slim and portable design. Suitable for reading, browsing, and media.",
+    "price": "36000.00",
+    "stock": 3,
+    "image": "products/Huawei-MatePad.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:09:47.393Z",
+    "updated_at": "2026-08-22T18:09:47.393Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 25,
+  "fields": {
+    "category": 5,
+    "name": "Samsung Tab",
+    "slug": "samsung-tab",
+    "brand": "Samsung",
+    "description": "Large Samsung tablet display. Smooth performance for study and entertainment. Good battery life. Lightweight design. Suitable for video, browsing, and notes.",
+    "price": "42000.00",
+    "stock": 2,
+    "image": "products/samsung_tab.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:10:33.285Z",
+    "updated_at": "2026-08-22T18:10:33.285Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 26,
+  "fields": {
+    "category": 5,
+    "name": "OnePlus Pad 4",
+    "slug": "oneplus-pad-4",
+    "brand": "OnePlus",
+    "description": "Large smooth display. Fast OnePlus performance. Good battery backup. Suitable for study, browsing, and entertainment. Slim tablet design. Fast charging support.",
+    "price": "89000.00",
+    "stock": 5,
+    "image": "products/onepluspad4.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:11:34.473Z",
+    "updated_at": "2026-08-22T18:11:34.473Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 27,
+  "fields": {
+    "category": 5,
+    "name": "iPad Pro M4",
+    "slug": "ipad-pro-m4",
+    "brand": "Apple",
+    "description": "Ultra Retina display. Apple M4 chip. Excellent performance for study, design, and entertainment. Apple Pencil support. Slim premium body. Long battery life.",
+    "price": "125000.00",
+    "stock": 6,
+    "image": "products/iPad-pro-m4.jpg",
+    "rating": "0.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:12:25.752Z",
+    "updated_at": "2026-08-22T18:12:25.752Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 28,
+  "fields": {
+    "category": 1,
+    "name": "Google Pixel 8a",
+    "slug": "google-pixel-8a",
+    "brand": "Google",
+    "description": "Compact OLED display. Google Tensor chip. AI-powered camera features. Smooth Android experience. 5G connectivity. Good value Pixel phone.",
+    "price": "48000.00",
+    "stock": 17,
+    "image": "products/Google-Pixel-8a.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:13:21.948Z",
+    "updated_at": "2026-08-22T18:13:21.948Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 29,
+  "fields": {
+    "category": 1,
+    "name": "Google Pixel 9",
+    "slug": "google-pixel-9",
+    "brand": "Google",
+    "description": "OLED display. Google Tensor processor. Excellent camera quality. Clean Android interface. 5G supported. Reliable battery for daily use.",
+    "price": "68499.00",
+    "stock": 13,
+    "image": "products/pixel9.webp",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:14:08.188Z",
+    "updated_at": "2026-08-22T18:14:08.188Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 30,
+  "fields": {
+    "category": 1,
+    "name": "Google Pixel 10 Pro",
+    "slug": "google-pixel-10-pro",
+    "brand": "Google",
+    "description": "Google Tensor performance. Clean Android experience. Advanced AI camera features. Bright OLED display. 5G connectivity. Fast and secure software updates.",
+    "price": "130999.00",
+    "stock": 6,
+    "image": "products/pixel10pro.png",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:14:58.275Z",
+    "updated_at": "2026-08-25T16:05:43.123Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 31,
+  "fields": {
+    "category": 1,
+    "name": "Samsung Galaxy A73 5G",
+    "slug": "samsung-galaxy-a73-5g",
+    "brand": "Samsung",
+    "description": "Large Super AMOLED Plus display. 5G connectivity. High resolution camera. Long battery life. Smooth performance for daily use. Slim Samsung design.",
+    "price": "52000.00",
+    "stock": 8,
+    "image": "products/Samsung-Galaxy-A73-5G.webp",
+    "rating": "4.70",
+    "is_available": true,
+    "created_at": "2026-08-22T18:16:07.639Z",
+    "updated_at": "2026-08-27T12:58:07.976Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 32,
+  "fields": {
+    "category": 1,
+    "name": "Galaxy A57 5G",
+    "slug": "galaxy-a57-5g",
+    "brand": "Samsung",
+    "description": "Large AMOLED display. 5G network support. Smooth daily performance. Long lasting battery. Multi-camera setup. Suitable for browsing, gaming, and media.",
+    "price": "71999.00",
+    "stock": 9,
+    "image": "products/galaxy_a57.png",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:16:52.912Z",
+    "updated_at": "2026-08-22T18:16:52.912Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 33,
+  "fields": {
+    "category": 1,
+    "name": "Galaxy Z Fold 8",
+    "slug": "galaxy-z-fold-8",
+    "brand": "Samsung",
+    "description": "Foldable large AMOLED display. Powerful Samsung flagship processor. Multitasking support. High quality camera system. 5G connectivity. Premium foldable design.",
+    "price": "189999.00",
+    "stock": 10,
+    "image": "products/galaxyzfold8.png",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-22T18:17:30.136Z",
+    "updated_at": "2026-08-22T18:17:30.136Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 34,
+  "fields": {
+    "category": 1,
+    "name": "iPhone 15 Pro Max",
+    "slug": "iphone-15-pro-max",
+    "brand": "Apple",
+    "description": "6.7 inch Super Retina XDR display. A17 Pro chip. Pro camera system with high quality zoom. USB-C support. Long battery life. Premium Apple flagship design.",
+    "price": "145000.00",
+    "stock": 7,
+    "image": "products/iPhone-15-Pro-Max.jpg",
+    "rating": "4.85",
+    "is_available": true,
+    "created_at": "2026-08-23T04:01:37.838Z",
+    "updated_at": "2026-08-27T12:57:55.213Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 35,
+  "fields": {
+    "category": 1,
+    "name": "iPhone 16 Pro",
+    "slug": "iphone-16-pro",
+    "brand": "Apple",
+    "description": "Super Retina XDR display. Powerful A-series processor. Pro camera system for photos and videos. 5G supported. Smooth iOS performance. Premium titanium-style design.",
+    "price": "119499.00",
+    "stock": 12,
+    "image": "products/iphone_16_pro.jpg",
+    "rating": "5.00",
+    "is_available": true,
+    "created_at": "2026-08-23T04:02:32.590Z",
+    "updated_at": "2026-08-23T04:02:32.590Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 36,
+  "fields": {
+    "category": 1,
+    "name": "iPhone 17 Pro Max",
+    "slug": "iphone-17-pro-max",
+    "brand": "Apple",
+    "description": "Large Super Retina XDR display. A-series pro performance chip. Advanced triple camera system. Long battery life. 5G connectivity. Face ID security.",
+    "price": "245000.00",
+    "stock": 9,
+    "image": "products/17promaxsilver.webp",
+    "rating": "4.80",
+    "is_available": true,
+    "created_at": "2026-08-23T04:03:14.545Z",
+    "updated_at": "2026-08-27T12:57:28.943Z"
+  }
+}
+]
